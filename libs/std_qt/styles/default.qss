@@ -1,0 +1,173 @@
+/*
+main:
+    Light Blue  #58B7FF
+    Blue  #20A0FF
+    Dark Blue  #1D8CE0
+other:
+    Blue  #20A0FF
+    Success  #13CE66
+    Warning  #F7BA2A
+    Danger  #FF4949
+gray:
+    Black  #1F2D3D
+    Light Black  #324057
+    Extra Light Black  #475669
+    Silver  #8492A6
+    Light Silver  #99A9BF
+    Extra Light Silver  #C0CCDA
+    Gray  #D3DCE6
+    Light Gray  #E5E9F2
+    Extra Light Gray  #EFF2F7
+    Dark White  #F9FAFC
+    White  #FFFFFF
+*/
+
+/*QWidget*/
+/*{*/
+    /*color: #C0CCDA;*/
+    /*selection-background-color: #1D8CE0;*/
+    /*selection-color: #13CE66;*/
+    /*font-family: "Consolas";*/
+    /*font-size: 12px;*/
+/*}*/
+
+QWidget {
+    background-color: #475669;
+    color: #F9FAFC;
+}
+
+QPushButton {
+    background-color: #20a0ff;
+    border-color: #20a0ff;
+}
+
+QCheckBox::indicator{
+    border: 1px solid #1F2D3D;
+    border-radius: 4px;
+    width: 12px;
+    height: 12px;
+}
+
+QCheckBox::indicator:checked {
+    background-color: #20a0ff;
+    border-color: #0190fe;
+	image: url(:/icons/checkmark.png)
+}
+
+QLineEdit {
+    background-color: #324057;
+    border-radius: 4px;
+    border: 1px solid #1F2D3D;
+    height: 20px;
+    padding: 3px 10px;
+	selection-background-color: #20a0ff;
+}
+
+QHeaderView::section {
+    background-color: #324057;
+    padding: 5px;
+    border: 1px solid #1F2D3D;
+}
+
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 20px;
+    border-left-width: 0px;
+    border-top-right-radius: 3px; /* same radius as the QComboBox */
+    border-bottom-right-radius: 3px;
+}
+
+QScrollBar:vertical
+{
+    width:8px;
+    background:rgba(0,0,0,0%);
+    margin:0px,0px,0px,0px;
+    padding-top:9px;
+    padding-bottom:9px;
+}
+
+QScrollBar::handle:vertical
+{
+    width:8px;
+    background:rgba(0,0,0,25%);
+    border-radius:4px;
+    min-height:20;
+}
+
+QScrollBar::handle:vertical:hover
+{
+    width:8px;
+    background:rgba(0,0,0,50%);
+    border-radius:4px;
+    min-height:20;
+}
+
+QScrollBar::add-line:vertical
+{
+    height:9px;
+    width:8px;
+    border: none;
+    subcontrol-position:bottom;
+}
+
+QScrollBar::sub-line:vertical
+{
+    height:9px;
+    width:8px;
+    border: none;
+    subcontrol-position:top;
+}
+
+QScrollBar::add-line:vertical:hover
+{
+    height:9px;
+    width:8px;
+    border: none;
+    subcontrol-position:bottom;
+}
+
+QScrollBar::sub-line:vertical:hover
+{
+    height:9px;
+    width:8px;
+    border: none;
+    subcontrol-position:top;
+}
+
+QScrollBar::add-page:vertical,QScrollBar::sub-page:vertical
+{
+    background:rgba(0,0,0,10%);
+    border-radius:4px;
+}
+
+QComboBox::down-arrow {
+    padding-left: 4px;
+    width:12px;
+    height:12px;
+    image: url(:/icons/arrow-down.png);
+}
+
+QComboBox::down-arrow:on {
+    image: url(:/icons/arrow-up2.png);
+}
+
+QGroupBox {
+    border: 2px solid gray;
+    border-radius: 5px;
+    margin-top: 1ex; /* leave space at the top for the title */
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    subcontrol-position: top center; /* position at the top center */
+    padding: 0 3px;
+}
+
+QTableView {
+    border: none;
+}
+
+QTreeView {
+    border:none;
+}

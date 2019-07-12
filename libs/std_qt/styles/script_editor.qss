@@ -1,0 +1,98 @@
+QWidget{
+    background-color: rgb(30, 30, 30);
+}
+QLabel{
+    color: rgb(210, 210, 210);
+}
+QTabBar::tab {
+    color: rgb(210, 210, 210);
+    padding-right: 10px;
+    padding-left: 10px;
+    height: 20px;
+    border-bottom-color: rgb(30, 30, 30);
+    background-color: rgb(30, 30, 30);
+}
+QTabBar::tab:selected, QTabBar::tab:hover {
+    background-color: rgb(45, 45, 45);
+    border-color: rgb(45, 45, 45);
+}
+QToolBar {
+    height: 16px;
+    border: none;
+	background-color: rgb(37, 37, 38);
+}
+QTabWidget {
+    background-color: rgb(45, 45, 45);
+}
+QTabWidget::pane {
+    border-color: rgb(45, 45, 45);
+    background-color: rgb(45, 45, 45);
+}
+QMenuBar {
+    background-color: rgb(240, 240, 240);
+}
+QMenu {
+    background-color: rgb(240, 240, 240);
+}
+QMenuBar::item {
+    background-color: rgb(240, 240, 240);
+}
+QWidget#output {
+    color: rgb(210, 210, 210);
+    background-color: rgb(45, 45, 45);
+    border: none;
+    border-bottom-color: rgb(68, 68, 68);
+}
+QTextEdit#input {
+    color: rgb(210, 210, 210);
+    border: none;
+	background-color: rgb(45, 45, 45);
+}
+QWidget#completer {
+    color: rgb(210, 210, 210);
+    background-color: rgb(68, 68, 68);
+}
+QWidget#container {
+    background-color: rgb(37, 37, 38);
+}
+QPushButton {
+    background-color: rgb(30, 30, 30);
+    width: 40px;
+    height: 40px;
+    border: none;
+}
+QSplitter::handle {
+    background-color: rgb(30, 30, 30);
+}
+QScrollBar::handle {
+    background-color: rgb(64,64, 64);
+}
+QScrollBar::add-page {
+	background: rgb(30, 30, 30);
+}
+QScrollBar::sub-page {
+	background: rgb(30, 30, 30);
+}
+QScrollBar::add-line {
+    border: none;
+}
+QScrollBar::sub-line {
+    border: none;
+}
+QWidget#shortcuts_dialog,
+QWidget#shortcuts_label {
+    border: none;
+}
+QTableWidget#shortcuts_table {
+    color: rgb(210, 210, 210);
+    border: none;
+    background-color: rgb(30, 30, 30);
+}
+QHeaderView::section {
+    color: rgb(210, 210, 210);
+    border: none;
+    background-color: rgb(45, 45, 45);
+}
+LineBarWidget{
+    color: rgb(210, 210, 210);
+}

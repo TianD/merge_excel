@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>item_tree_widget</class>
+ <widget class="QWidget" name="item_tree_widget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>867</width>
+    <height>649</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">#item_view {
+border:none;
+}</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="margin">
+    <number>6</number>
+   </property>
+   <item>
+    <widget class="QWidget" name="group_widget" native="true">
+     <layout class="QHBoxLayout" name="group_layout" stretch="0,1">
+      <property name="margin">
+       <number>0</number>
+      </property>
+      <item>
+       <widget class="QLabel" name="group_label">
+        <property name="text">
+         <string>Group by:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="group_combo">
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <item>
+         <property name="text">
+          <string/>
+         </property>
+        </item>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QWidget" name="filter_widget" native="true">
+     <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,0,1">
+      <property name="margin">
+       <number>0</number>
+      </property>
+      <item>
+       <widget class="QLabel" name="filter_label">
+        <property name="text">
+         <string>Filter by:   </string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="filter_combo"/>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="filter_lineEdit">
+        <property name="placeholderText">
+         <string>filter</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="ItemTreeView" name="item_view">
+     <property name="indentation">
+      <number>10</number>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>ItemTreeView</class>
+   <extends>QTreeView</extends>
+   <header>item_tree_widget.ItemTreeView</header>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>item_view</tabstop>
+  <tabstop>group_combo</tabstop>
+  <tabstop>filter_combo</tabstop>
+  <tabstop>filter_lineEdit</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>

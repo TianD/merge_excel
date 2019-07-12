@@ -1,0 +1,231 @@
+QWidget
+{
+    background-color : rgb(27, 28, 30);
+    color : rgb(202, 207, 210);
+}
+
+QWidget#InterpolateIt
+{
+    background-color : rgb(12, 13, 15);
+}
+
+QWidget:disabled
+{
+    color : rgb(112, 117, 120);
+}
+
+QLineEdit, QTextEdit
+{
+    border: 1px solid #494949;
+    border-radius: 3px;
+    font-size: 14px;
+    selection-background-color: rgb(167, 167, 167);
+    selection-color: rgb(26, 26, 26);
+}
+
+QLineEdit:focus, QTextEdit:focus, QSpinBox:focus, QTimeEdit:focus, QDateEdit:focus
+{
+    border-color: #1D8CE0;
+}
+
+QPushButton, QToolButton
+{
+    background : qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 rgb(53, 57, 60), stop:1 rgb(33, 34, 36));
+    border: 2px solid rgb(9, 10, 12);
+    border-radius: 5px;
+    padding-top : 0px;
+    padding-bottom : 0px;
+    padding-left : 10px;
+    padding-right : 10px;
+    color : rgb(202, 207, 210);
+    height : 20px;
+    width : 60px;
+}
+
+QPushButton:disabled, QToolButton:disabled
+{
+    background : qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 rgb(33, 37, 40), stop:1 rgb(13, 14, 16));
+}
+
+QPushButton:hover, QToolButton:hover
+{
+    color : rgb(0, 255, 0);
+}
+
+QPushButton:pressed, QPushButton:on, QToolButton:pressed, QToolButton:on
+{
+    background : qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 rgb(20, 21, 23), stop:1 rgb(48, 49, 51));
+    padding-top : 2px;
+    color : rgb(0, 255, 0);
+}
+
+QPushButton#roundedButton
+{
+    border-radius: 10px;
+}
+
+
+QSlider
+{
+    height : 24;
+}
+
+
+QSlider::groove:horizontal
+{
+    border : 1px solid rgb(9, 10, 12);
+    border-radius : 11px;
+    background : rgb(9, 10, 12);
+}
+
+
+QSlider::handle:horizontal
+{
+    border : 2px solid rgb(9, 10, 12);
+    border-radius: 11px;
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 rgb(53, 57, 60), stop:1 rgb(33, 34, 36));
+    width: 18;
+}
+
+
+QSlider::handle:horizontal:hover,
+QSlider::handle:horizontal:pressed
+{
+    border : 2px solid rgb(0, 255, 0);
+}
+
+QComboBox {
+    border: 1px solid #494949;
+    border-radius: 3px;
+    padding: 1px 18px 1px 3px;
+    min-width: 6em;
+}
+
+QComboBox:hover {
+    color: #00ff00
+}
+
+QComboBox:editable {
+    background: #1b1b19;
+}
+
+QComboBox:!editable, QComboBox::drop-down:editable {
+     background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 rgb(53, 57, 60), stop:1 rgb(33, 34, 36));
+}
+
+/* QComboBox gets the "on" state when the popup is open */
+QComboBox:!editable:on, QComboBox::drop-down:editable:on {
+    background-color: #494949;
+}
+
+QComboBox:on { /* shift the text when the popup opens */
+    padding-top: 3px;
+    padding-left: 4px;
+}
+
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 15px;
+
+    border-left-width: 1px;
+    border-left-color: #1b1b19;
+    border-left-style: solid; /* just a single line */
+    border-top-right-radius: 3px; /* same radius as the QComboBox */
+    border-bottom-right-radius: 3px;
+}
+
+QComboBox::down-arrow {
+    image: url(:/StrackDesk/icons/circle.png);
+}
+
+QComboBox::down-arrow:hover {
+    image: url(:/StrackDesk/icons/circle_green.png);
+}
+
+QComboBox::down-arrow:on { /* shift the arrow when popup is open */
+    image: url(:/StrackDesk/icons/circle_green_on.png);
+}
+
+QSpinBox, QTimeEdit, QDateEdit
+{
+    border: 1px solid #494949;
+    border-radius: 3px;
+}
+
+QScrollBar:vertical {
+    border: 2px solid #363636;
+    border-radius: 3px;
+    background: #363636;
+    width: 15px;
+    margin: 22px 0 22px 0;
+}
+QScrollBar::handle:vertical {
+    background: #959595;
+    border-radius: 3px;
+    min-height:20px;
+}
+
+QScrollBar::add-line:vertical {
+    background: #363636;
+    height:20px;
+    subcontrol-position: bottom;
+    subcontrol-origin: margin;
+}
+
+QScrollBar::sub-line:vertical {
+    background: #363636;
+    height:20px;
+    subcontrol-position: top;
+    subcontrol-origin: margin;
+}
+
+QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {
+    border:2px solid #1b1b1b;
+}
+
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+    background: none;
+}
+
+QScrollBar:horizontal {
+    border: 2px solid #363636;
+    border-radius: 3px;
+    background: #363636;
+    height: 15px;
+    margin: 0 22px 0 22px;
+}
+
+QScrollBar::handle:horizontal {
+    background: #959595;
+    border-radius: 3px;
+    min-width:20px;
+}
+
+QScrollBar::add-line:horizontal {
+    background: #363636;
+    width:20px;
+    subcontrol-position: right;
+    subcontrol-origin: margin;
+}
+
+QScrollBar::sub-line:horizontal {
+    background: #363636;
+    width:20px;
+    subcontrol-position: left;
+    subcontrol-origin: margin;
+}
+
+QScrollBar::left-arrow:horizontal, QScrollBar::right-arrow:horizontal {
+    border:2px solid #1b1b1b;
+}
+
+QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal{
+    background: none;
+}
+
+QListView, QTableView, QColumnView
+{
+    border: 1px solid #494949;
+    border-radius: 3px;
+}
