@@ -1,8 +1,6 @@
 # coding:utf-8
 import os
 import sys
-import codecs
-import traceback
 
 import pandas as pd
 
@@ -58,7 +56,7 @@ class MergeExcelWidget(FormClass, BaseClass):
         self.add_btn.clicked.connect(self.add_addition_excel)
         self.del_btn.clicked.connect(self.del_addition_excel)
         self.addition_table_model.dataChanged.connect(self.update_source_data)
-        self.base_column_combo_box.currentIndexChanged.connect(self.rematch_result_data)
+        self.base_column_combo_box.currentIndexChanged.connect(self.update_source_data)
         self.export_btn.clicked.connect(self.export)
 
     def edit_source_line_edit(self):
@@ -66,22 +64,19 @@ class MergeExcelWidget(FormClass, BaseClass):
         self.source_line_edit.setText(excel_path)
 
     def init_source_data(self, excel_path):
-        self.result_data = pd.DataFrame()
+        self.source_data = pd.DataFrame()
         if os.path.isfile(excel_path):
             self.source_data = pd.read_excel(excel_path, sheet_name=0)
-            self.result_data = self.result_data.append(self.source_data, ignore_index=True)
-            self.refresh_result_data()
-            self.base_column_combo_box.addItems(self.source_data.columns.values.tolist())
-            self.base_column_combo_box.setCurrentIndex(0)
+        self.base_column_combo_box.addItems(self.source_data.columns.values.tolist())
+        self.base_column_combo_box.setCurrentIndex(0)
 
-    def update_source_data(self, index1, index2):
-        model = index1.model()
+    def update_source_data(self, index1=None, index2=None):
         self.result_data = pd.DataFrame()
         self.result_data = self.result_data.append(self.source_data, ignore_index=True)
-        for row in range(model.rowCount()):
-            match_column_data = model.source_data[row][1]
-            addition_excel_path = model.source_data[row][0]
-            addition_column_data = model.source_data[row][2]
+        for row in range(self.addition_table_model.rowCount()):
+            match_column_data = self.addition_table_model.source_data[row][1]
+            addition_excel_path = self.addition_table_model.source_data[row][0]
+            addition_column_data = self.addition_table_model.source_data[row][2]
             addition_excel_data = pd.read_excel(addition_excel_path, sheet_name=0)
             source_base_column = getattr(self.source_data, self.base_column_combo_box.currentText())
             if addition_column_data != '':
@@ -92,9 +87,6 @@ class MergeExcelWidget(FormClass, BaseClass):
     def refresh_result_data(self):
         self.result_table_model = ResultTableModel(self.result_data)
         self.result_table_view.setModel(self.result_table_model)
-
-    def rematch_result_data(self):
-        pass
 
     def add_addition_excel(self):
         excel_path, _ = QtWidgets.QFileDialog.getOpenFileName(self, filter='*.xls *.xlsx')
