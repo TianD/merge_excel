@@ -1,6 +1,5 @@
 # coding:utf-8
 
-import pandas as pd
 from Qt import QtCore
 
 
@@ -39,7 +38,11 @@ class ResultTableModel(QtCore.QAbstractTableModel):
         column = index.column()
 
         if role == QtCore.Qt.DisplayRole:
-            return self.source_data[row][column]
+            value = self.source_data[row][column]
+            if value != value:
+                return
+            else:
+                return value
 
     def flags(self, index):
         return QtCore.Qt.ItemIsSelectable | QtCore.Qt.ItemIsEnabled

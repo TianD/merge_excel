@@ -60,7 +60,7 @@ class AdditionTableModel(QtCore.QAbstractTableModel):
     def __init__(self, source_data=None, parent=None):
         super(AdditionTableModel, self).__init__(parent)
         self.__source_data = source_data or list()
-        self.__headers = [u'Excel路径', u'匹配列', u'添加列']
+        self.__headers = [u'Excel路径', u'名称匹配列', u'时码匹配列', u'添加列']
 
     @property
     def source_data(self):

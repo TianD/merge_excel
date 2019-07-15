@@ -55,12 +55,29 @@
      <item>
       <widget class="QLabel" name="base_column_label">
        <property name="text">
-        <string>基准列:</string>
+        <string>名称列:</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QComboBox" name="base_column_combo_box"/>
+     </item>
+     <item>
+      <widget class="Line" name="line_2">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="timecode_column_label">
+       <property name="text">
+        <string>时码列:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="timecode_column_combo_box"/>
      </item>
     </layout>
    </item>
