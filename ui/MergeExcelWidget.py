@@ -48,8 +48,9 @@ class MergeExcelWidget(FormClass, BaseClass):
         self.addition_table_view.setItemDelegateForColumn(1, self.addition_table_base_match_column_delegate)
         self.addition_table_timecode_match_column_delegate = MatchedColumnDelegate(self)
         self.addition_table_view.setItemDelegateForColumn(2, self.addition_table_timecode_match_column_delegate)
+        self.addition_table_view.setItemDelegateForColumn(3, self.addition_table_timecode_match_column_delegate)
         self.addition_table_addition_column_delegate = AdditionColumnDelegate(self)
-        self.addition_table_view.setItemDelegateForColumn(3, self.addition_table_addition_column_delegate)
+        self.addition_table_view.setItemDelegateForColumn(4, self.addition_table_addition_column_delegate)
 
     def bind_fun(self):
         self.source_browse_btn.clicked.connect(self.edit_source_line_edit)
@@ -71,11 +72,14 @@ class MergeExcelWidget(FormClass, BaseClass):
             self.source_data = pd.read_excel(excel_path, sheet_name=0)
 
         self.base_column_combo_box.clear()
-        self.timecode_column_combo_box.clear()
+        self.start_column_combo_box.clear()
+        self.end_column_combo_box.clear()
         self.base_column_combo_box.addItems(self.source_data.columns.values.tolist())
-        self.timecode_column_combo_box.addItems(self.source_data.columns.values.tolist())
+        self.start_column_combo_box.addItems(self.source_data.columns.values.tolist())
+        self.end_column_combo_box.addItems(self.source_data.columns.values.tolist())
         self.base_column_combo_box.setCurrentIndex(0)
-        self.timecode_column_combo_box.setCurrentIndex(1)
+        self.start_column_combo_box.setCurrentIndex(1)
+        self.end_column_combo_box.setCurrentIndex(2)
 
     def update_source_data(self, index1=None, index2=None):
         self.result_data = pd.DataFrame()
@@ -83,27 +87,33 @@ class MergeExcelWidget(FormClass, BaseClass):
         for row in range(self.addition_table_model.rowCount()):
             addition_excel_path = self.addition_table_model.source_data[row][0]
             name_match_column_data = self.addition_table_model.source_data[row][1]
-            timecode_match_column_data = self.addition_table_model.source_data[row][2]
-            addition_column_data = self.addition_table_model.source_data[row][3]
+            start_match_column_data = self.addition_table_model.source_data[row][2]
+            end_match_column_data = self.addition_table_model.source_data[row][3]
+            addition_column_data = self.addition_table_model.source_data[row][4]
             addition_excel_data = pd.read_excel(addition_excel_path, sheet_name=0)
             source_base_column_text = self.base_column_combo_box.currentText()
-            source_timecode_column_text = self.timecode_column_combo_box.currentText()
+            source_start_column_text = self.start_column_combo_box.currentText()
+            source_end_column_text = self.end_column_combo_box.currentText()
             if addition_column_data != '':
                 for addition_column in addition_column_data.split(';'):
                     self.result_data[addition_column] = map(
-                        lambda x, y: self._match_value(x, y, addition_excel_data, name_match_column_data,
-                                                       timecode_match_column_data, addition_column),
-                        self.source_data[source_base_column_text], self.source_data[source_timecode_column_text])
+                        lambda x, y, z: self._match_value(x, y, z, addition_excel_data,
+                                                          name_match_column_data, start_match_column_data,
+                                                          end_match_column_data, addition_column),
+                        self.source_data[source_base_column_text],
+                        self.source_data[source_start_column_text],
+                        self.source_data[source_end_column_text])
         self.refresh_result_data()
 
     def refresh_result_data(self):
         self.result_table_model = ResultTableModel(self.result_data)
         self.result_table_view.setModel(self.result_table_model)
+        self.result_table_view.resizeColumnsToContents()
 
     def add_addition_excel(self):
         excel_path, _ = QtWidgets.QFileDialog.getOpenFileName(self, filter='*.xls *.xlsx')
         if os.path.isfile(excel_path):
-            self.addition_table_model.appendRow([excel_path, '', '', ''])
+            self.addition_table_model.appendRow([excel_path, '', '', '', ''])
 
     def edit_export_line_edit(self):
         export_path, _ = QtWidgets.QFileDialog.getSaveFileName(self, filter='.xls .xlsx')
@@ -123,11 +133,12 @@ class MergeExcelWidget(FormClass, BaseClass):
         for index in sorted(selected_indexs, key=lambda x: x.row())[::-1]:
             self.addition_table_model.removeRow(index.row())
 
-    def _match_value(self, x, y, addition_excel_data, name_match_column_data, timecode_match_column_data,
-                     addition_column):
+    def _match_value(self, x, y, z, addition_excel_data, name_match_column_data, start_match_column_data,
+                     end_match_column_data, addition_column):
         try:
             result = addition_excel_data[(addition_excel_data[name_match_column_data] == x) &
-                                         (addition_excel_data[timecode_match_column_data] == y)]
+                                         (addition_excel_data[start_match_column_data] == y) &
+                                         (addition_excel_data[end_match_column_data] == z)]
         except:
             return
         if result.values.tolist():

@@ -40,7 +40,7 @@ class AdditionColumnDelegate(QtWidgets.QStyledItemDelegate):
         model = index.model()
         row = index.row()
         excel_path = model.source_data[row][0]
-        current_value = model.source_data[row][2]
+        current_value = model.source_data[row][-1]
         excel_data = pd.read_excel(excel_path, sheet_name=0)
         column_list = excel_data.columns.values.tolist()
         current_index_list = [i for i, column in enumerate(column_list) if column in current_value.split(';')]
@@ -60,7 +60,7 @@ class AdditionTableModel(QtCore.QAbstractTableModel):
     def __init__(self, source_data=None, parent=None):
         super(AdditionTableModel, self).__init__(parent)
         self.__source_data = source_data or list()
-        self.__headers = [u'Excel路径', u'名称匹配列', u'时码匹配列', u'添加列']
+        self.__headers = [u'Excel路径', u'名称匹配列', u'起始时码匹配列', u'结束时码匹配列', u'添加列']
 
     @property
     def source_data(self):

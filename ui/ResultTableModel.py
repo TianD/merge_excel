@@ -39,10 +39,10 @@ class ResultTableModel(QtCore.QAbstractTableModel):
 
         if role == QtCore.Qt.DisplayRole:
             value = self.source_data[row][column]
-            if value != value:
+            if isinstance(value, float) and str(value) == 'nan':
                 return
             else:
-                return value
+                return '%s' % value
 
     def flags(self, index):
         return QtCore.Qt.ItemIsSelectable | QtCore.Qt.ItemIsEnabled
