@@ -135,10 +135,11 @@ class MergeExcelWidget(FormClass, BaseClass):
 
     def _match_value(self, x, y, z, addition_excel_data, name_match_column_data, start_match_column_data,
                      end_match_column_data, addition_column):
+        # x is name, y is start timecode, z is end timecode
         try:
             result = addition_excel_data[(addition_excel_data[name_match_column_data] == x) &
-                                         (addition_excel_data[start_match_column_data] == y) &
-                                         (addition_excel_data[end_match_column_data] == z)]
+                                         (addition_excel_data[start_match_column_data] <= y) &
+                                         (addition_excel_data[end_match_column_data] >= z)]
         except:
             return
         if result.values.tolist():
